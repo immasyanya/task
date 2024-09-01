@@ -14,7 +14,20 @@ void Main()
     int arraySize = ReadInt("Введите размер массива: ");
     string[] array = GenerateArray(arraySize);
     PrintArray(array);
-    System.Console.WriteLine(CountElements(array));
+    string[] ArrayNew = NewArray(CountElements(array), array);
+    PrintArray(ArrayNew);
+}
+
+string[] NewArray(int size, string[] array){
+    string[] NewArray = new string[size];
+    int num = 0;
+    for (int i = 0; i < array.Length; i++){
+        if (array[i].Length < 4){
+        NewArray[num] = array[i];
+        num++;
+        }
+    }
+    return NewArray;
 }
 
 int CountElements(string[] arrayForCount){
@@ -34,20 +47,18 @@ void PrintArray(string[] arrayForPrint){
 }
 
 string[] GenerateArray(int size){
-
-string[] tempArray = new string[size];
-
-for (int i = 0; i < tempArray.Length; i++){
-    System.Console.Write("Введите элемент: ");
-    tempArray[i] = Console.ReadLine();
+    string[] tempArray = new string[size];
+    for (int i = 0; i < tempArray.Length; i++){
+        System.Console.Write("Введите элемент: ");
+        tempArray[i] = Console.ReadLine();
 }
-return tempArray;
+    return tempArray;
 }
 
 int ReadInt(string msg)
 {
-System.Console.Write(msg);
-return Convert.ToInt32(Console.ReadLine());
+    System.Console.Write(msg);
+    return Convert.ToInt32(Console.ReadLine());
 }
 
 Main();
