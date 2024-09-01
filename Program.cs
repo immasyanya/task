@@ -9,20 +9,37 @@
 // [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 // [“Russia”, “Denmark”, “Kazan”] → []
 
-Console.Write("Введите размер массива: ");
-int arraySize = Convert.ToInt32(Console.ReadLine());
-
-int[] array = new int[arraySize];
-Random rand = new Random();
-
-// Заполнение массива
-for (int i = 0; i < array.Length; i++)
+void Main()
 {
-array[i] = rand.Next(10, 100);
+int arraySize = ReadInt("Введите размер массива: ");
+string[] array = GenerateArray(arraySize);
+PrintArray(array);
+
 }
 
-// Вывод массива
-for (int i = 0; i < array.Length; i++)
+void PrintArray(string[] arrayForPrint)
 {
-Console.Write(array[i] + " ");
+for (int i = 0; i < arrayForPrint.Length; i++)
+System.Console.Write(arrayForPrint[i] + " ");
+
+System.Console.WriteLine();
 }
+
+string[] GenerateArray(int size)
+{
+string[] tempArray = new string[size];
+
+for (int i = 0; i < tempArray.Length; i++){
+    System.Console.Write("Введите элемент: ");
+    tempArray[i] = Console.ReadLine();
+}
+return tempArray;
+}
+
+int ReadInt(string msg)
+{
+System.Console.Write(msg);
+return Convert.ToInt32(Console.ReadLine()); // 13
+}
+
+Main();
